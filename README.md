@@ -18,7 +18,7 @@ A game project currently in development during the RING Game Jam 2016.
       <img src="https://avatars0.githubusercontent.com/u/9369529?s=50"/>
   </a>&nbsp;&nbsp;
   <a title="Roberto Ramos" target="_blank" href="http://github.com/ramosroberto">
-      <img src="https://avatars0.githubusercontent.com/u/11227629?s=50"/>
+      <img src="https://placekitten.com/g/50/50"/>
   </a>&nbsp;&nbsp;
   <a title="Thiago do Prado" target="_blank" href="http://github.com/PradoTPS">
       <img src="https://avatars0.githubusercontent.com/u/11035000?s=50"/>
