@@ -24,10 +24,14 @@ public class Main : MonoBehaviour
 	{
 		for (int i = 0; i < 4; i++) 
 		{
-			foreach (char c in PlayerPrefs.GetString(i.ToString())) 
-			{
-				keyAnswer [i] += "" + Translate (c.ToString());
+			Debug.Log (PlayerPrefs.GetString (i.ToString ()).Length + " : " + PlayerPrefs.GetString (i.ToString ()));
+			if (PlayerPrefs.GetString (i.ToString ()).Length > 1) {
+				foreach (char c in PlayerPrefs.GetString(i.ToString())) {
+					keyAnswer [i] += "" + Translate (c.ToString ());
+				}
 			}
+
+			else if(PlayerPrefs.GetString (i.ToString ()).Length == 1) keyAnswer[i] += "" + Translate(PlayerPrefs.GetString (i.ToString ()));
 			Debug.Log (keyAnswer [i]);
 		}
 		spawnPoints = GameObject.FindGameObjectsWithTag ("SP");
