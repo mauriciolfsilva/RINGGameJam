@@ -17,6 +17,10 @@ public class InfoController : MonoBehaviour {
 	private string _yellowPatterns;
 
 	public Sprite[] symbols;
+	List<int> rSymRefs = new List<int>();
+	List<int> gSymRefs = new List<int>();
+	List<int> bSymRefs = new List<int>();
+	List<int> ySymRefs = new List<int>();
 	public Text counterText;
 	private string listPatterns;
 	private float counter;
@@ -26,31 +30,31 @@ public class InfoController : MonoBehaviour {
 		counter = 10;
 		dificult = PlayerPrefs.GetInt("SymbolsDif");
 		for (int i = 0; i < dificult; i++) {
-			//Debug.Log (PlayerPrefs.GetInt("ColorDif"));
-			if (PlayerPrefs.GetInt ("ColorDif") >= 2)
-			{
-				redPatterns [i].sprite = symbols [Random.Range (0, 3)];
-				bluePatterns [i].sprite = symbols [Random.Range (0, 3)];
+			if (PlayerPrefs.GetInt ("ColorDif") >= 2) {
+				rSymRefs.Add (Random.Range (0, 3));
+				bSymRefs.Add (Random.Range (0, 3));
+				redPatterns [i].sprite = symbols [rSymRefs [rSymRefs.Count - 1]];
+				bluePatterns [i].sprite = symbols [bSymRefs [bSymRefs.Count - 1]];
+			} else if (PlayerPrefs.GetInt ("ColorDif") >= 3) {
+				gSymRefs.Add (Random.Range (0, 3));
+				greenPatterns [i].sprite = symbols [gSymRefs [gSymRefs.Count - 1]];
 			}
-
-			else if(PlayerPrefs.GetInt("ColorDif") >= 3 )greenPatterns [i].sprite = symbols [Random.Range(0, 3)];
-			if(PlayerPrefs.GetInt("ColorDif") >= 4) yellowPatterns [i].sprite = symbols [Random.Range(0, 3)];
+			if (PlayerPrefs.GetInt ("ColorDif") >= 4) {
+				ySymRefs.Add (Random.Range (0, 3));
+				yellowPatterns [i].sprite = symbols [gSymRefs [gSymRefs.Count - 1]];
+			}
 		}
 		for (int i = 0; i < dificult; i++) {
-			_redPatterns += i;
-			_greenPatterns += i;
-			_bluePatterns += i;
-			_yellowPatterns += i;
+			if(rSymRefs.Count > 0)_redPatterns += rSymRefs[i];
+			if(gSymRefs.Count > 0)_greenPatterns += gSymRefs[i];
+			if(bSymRefs.Count > 0)_bluePatterns += bSymRefs[i];
+			if(ySymRefs.Count > 0)_yellowPatterns += ySymRefs[i];
 		}
 	}
 
 	void Update () {
-		
 
-		hideTip (redPatterns, dificult);
-		hideTip (bluePatterns, dificult);
-		hideTip (greenPatterns, dificult);
-		hideTip (yellowPatterns, dificult);
+		hideTip();
 
 		if (PlayerPrefs.GetInt ("ColorDif") >= 2) {
 			PlayerPrefs.SetString ("0", _redPatterns);
@@ -68,13 +72,70 @@ public class InfoController : MonoBehaviour {
 		}
 	}
 
-	void hideTip(Image[] obj, int dificult) {
+	void hideTip() 
+	{
 		
-		if (dificult == 1) {
-			obj [obj.Length - 1].color = new Color (obj [obj.Length - 1].color.r, obj [obj.Length - 1].color.g, obj [obj.Length - 1].color.b, 0);
-			obj [obj.Length - 2].color = new Color (obj [obj.Length - 2].color.r, obj [obj.Length - 2].color.g, obj [obj.Length - 2].color.b, 0);
+		if (PlayerPrefs.GetInt("SymbolsDif") == 1) {
+			redPatterns [redPatterns.Length - 1].color = new Color (redPatterns [redPatterns.Length - 1].color.r, redPatterns [redPatterns.Length - 1].color.g, redPatterns [redPatterns.Length - 1].color.b, 0);
+			redPatterns [redPatterns.Length - 2].color = new Color (redPatterns [redPatterns.Length - 2].color.r, redPatterns [redPatterns.Length - 2].color.g, redPatterns [redPatterns.Length - 2].color.b, 0);
 	
-		} else if (dificult == 2)
-			obj [obj.Length - 1].color = new Color (obj [obj.Length - 1].color.r, obj [obj.Length - 1].color.g, obj [obj.Length - 1].color.b, 0);
+		} 
+		else if (PlayerPrefs.GetInt("SymbolsDif") == 2)
+			redPatterns [redPatterns.Length - 1].color = new Color (redPatterns [redPatterns.Length - 1].color.r, redPatterns [redPatterns.Length - 1].color.g, redPatterns [redPatterns.Length - 1].color.b, 0);
+
+		if (PlayerPrefs.GetInt ("ColorDif") == 2) 
+		{
+			if (PlayerPrefs.GetInt ("SymbolsDif") == 1) 
+			{
+				bluePatterns [bluePatterns.Length - 1].color = new Color (bluePatterns [bluePatterns.Length - 1].color.r, bluePatterns [bluePatterns.Length - 1].color.g, bluePatterns [bluePatterns.Length - 1].color.b, 0);
+				bluePatterns [bluePatterns.Length - 2].color = new Color (bluePatterns [bluePatterns.Length - 2].color.r, bluePatterns [bluePatterns.Length - 2].color.g, bluePatterns [bluePatterns.Length - 2].color.b, 0);
+
+			} 
+			else if (PlayerPrefs.GetInt ("SymbolsDif") == 2)
+				bluePatterns [bluePatterns.Length - 1].color = new Color (bluePatterns [bluePatterns.Length - 1].color.r, bluePatterns [bluePatterns.Length - 1].color.g, bluePatterns [bluePatterns.Length - 1].color.b, 0);
+		} 
+		else if(PlayerPrefs.GetInt ("ColorDif") < 2)
+		{
+			bluePatterns [bluePatterns.Length - 1].color = new Color (bluePatterns [bluePatterns.Length - 1].color.r, bluePatterns [bluePatterns.Length - 1].color.g, bluePatterns [bluePatterns.Length - 1].color.b, 0);
+			bluePatterns [bluePatterns.Length - 2].color = new Color (bluePatterns [bluePatterns.Length - 2].color.r, bluePatterns [bluePatterns.Length - 2].color.g, bluePatterns [bluePatterns.Length - 2].color.b, 0);
+			bluePatterns [bluePatterns.Length - 3].color = new Color (bluePatterns [bluePatterns.Length - 3].color.r, bluePatterns [bluePatterns.Length - 3].color.g, bluePatterns [bluePatterns.Length - 3].color.b, 0);
+		}
+
+		if (PlayerPrefs.GetInt ("ColorDif") == 3) 
+		{
+			Debug.Log (PlayerPrefs.GetInt ("ColorDif") + " : " + PlayerPrefs.GetInt ("SymbolsDif"));
+			if (PlayerPrefs.GetInt ("SymbolsDif") == 1)
+			{
+				greenPatterns [greenPatterns.Length - 1].color = new Color (greenPatterns [greenPatterns.Length - 1].color.r, greenPatterns [greenPatterns.Length - 1].color.g, greenPatterns [greenPatterns.Length - 1].color.b, 0);
+				greenPatterns [greenPatterns.Length - 2].color = new Color (greenPatterns [greenPatterns.Length - 2].color.r, greenPatterns [greenPatterns.Length - 2].color.g, greenPatterns [greenPatterns.Length - 2].color.b, 0);
+
+			} 
+			else if (PlayerPrefs.GetInt ("SymbolsDif") == 2)
+				greenPatterns [greenPatterns.Length - 1].color = new Color (greenPatterns [greenPatterns.Length - 1].color.r, greenPatterns [greenPatterns.Length - 1].color.g, greenPatterns [greenPatterns.Length - 1].color.b, 0);
+		}
+		else if(PlayerPrefs.GetInt ("ColorDif") < 3)
+		{
+			greenPatterns [greenPatterns.Length - 1].color = new Color (greenPatterns [greenPatterns.Length - 1].color.r, greenPatterns [greenPatterns.Length - 1].color.g, greenPatterns [greenPatterns.Length - 1].color.b, 0);
+			greenPatterns [greenPatterns.Length - 2].color = new Color (greenPatterns [greenPatterns.Length - 2].color.r, greenPatterns [greenPatterns.Length - 2].color.g, greenPatterns [greenPatterns.Length - 2].color.b, 0);
+			greenPatterns [greenPatterns.Length - 3].color = new Color (greenPatterns [greenPatterns.Length - 3].color.r, greenPatterns [greenPatterns.Length - 3].color.g, greenPatterns [greenPatterns.Length - 3].color.b, 0);
+		}
+
+		if (PlayerPrefs.GetInt ("ColorDif") == 4) 
+		{
+			if (PlayerPrefs.GetInt ("SymbolsDif") == 1)
+			{
+				yellowPatterns [yellowPatterns.Length - 1].color = new Color (yellowPatterns [yellowPatterns.Length - 1].color.r, yellowPatterns [yellowPatterns.Length - 1].color.g, yellowPatterns [yellowPatterns.Length - 1].color.b, 0);
+				yellowPatterns [yellowPatterns.Length - 2].color = new Color (yellowPatterns [yellowPatterns.Length - 2].color.r, yellowPatterns [yellowPatterns.Length - 2].color.g, yellowPatterns [yellowPatterns.Length - 2].color.b, 0);
+
+			}
+			else if (PlayerPrefs.GetInt ("SymbolsDif") == 2)
+				yellowPatterns [yellowPatterns.Length - 1].color = new Color (yellowPatterns [yellowPatterns.Length - 1].color.r, yellowPatterns [yellowPatterns.Length - 1].color.g, yellowPatterns [yellowPatterns.Length - 1].color.b, 0);
+		}
+		else 
+		{
+			yellowPatterns [yellowPatterns.Length - 1].color = new Color (yellowPatterns [yellowPatterns.Length - 1].color.r, yellowPatterns [yellowPatterns.Length - 1].color.g, yellowPatterns [yellowPatterns.Length - 1].color.b, 0);
+			yellowPatterns [yellowPatterns.Length - 2].color = new Color (yellowPatterns [yellowPatterns.Length - 2].color.r, yellowPatterns [yellowPatterns.Length - 2].color.g, yellowPatterns [yellowPatterns.Length - 2].color.b, 0);
+			yellowPatterns [yellowPatterns.Length - 3].color = new Color (yellowPatterns [yellowPatterns.Length - 3].color.r, yellowPatterns [yellowPatterns.Length - 3].color.g, yellowPatterns [yellowPatterns.Length - 3].color.b, 0);
+		}
 	}
 }
