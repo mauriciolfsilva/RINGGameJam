@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Main : MonoBehaviour 
 {
@@ -12,6 +14,9 @@ public class Main : MonoBehaviour
 	GameObject[] spawnPoints;
 	float spawnTime = 5f;
 	float time = 0;
+	float comboTime = 0f;
+	int combo = 0;
+	float score = 0;
 	int lastAdd;
 	public GameObject enemy;
 
@@ -19,8 +24,8 @@ public class Main : MonoBehaviour
 	{
 		keyAnswer[0] = "XX";
 		keyAnswer[1] = "OO";
-		keyAnswer[2] = "XTriSq";
-		keyAnswer[3] = "OXO";
+		keyAnswer[2] = "SS";
+		keyAnswer[3] = "TT";
 		spawnPoints = GameObject.FindGameObjectsWithTag ("SP");
 
 		for (int i = 0; i < 4; i++) 
@@ -33,16 +38,21 @@ public class Main : MonoBehaviour
 	{
 		GameObject[] temp;
 		time += Time.deltaTime;
+		comboTime -= Time.deltaTime;
+
+		if (comboTime <= 0f) 
+		{
+			combo = 0;
+		}
+
 		if (time >= spawnTime) 
 		{
 			Spawn ();
 			temp = GameObject.FindGameObjectsWithTag ("C" + lastAdd);
-			Debug.Log (temp.Length);
 			enemies [lastAdd].Clear ();
 			for (int i = 0; i < temp.Length; i++) 
 			{
 				enemies [lastAdd].Add(temp [i]);
-				Debug.Log (enemies.Length + " : " + enemies [lastAdd].Count);
 			}
 			time = 0f;
 		}
@@ -51,9 +61,11 @@ public class Main : MonoBehaviour
 		{
 			if (tryText.Equals (keyAnswer[i])) 
 			{
-				Debug.Log ("Killed" + i);
+				Debug.Log (tryText + " : " + keyAnswer [i]);
 				tries = 0;
 				tryText = "";
+				SocreGain (i);
+				Debug.Log (tryText + " : " + keyAnswer [i]);
 				for(int n = 0; n < enemies[i].Count; n++)
 				{
 					Destroy(enemies [i] [n]);
@@ -66,7 +78,6 @@ public class Main : MonoBehaviour
 		{
 			tries = 0;
 			tryText = "";
-			Debug.Log ("WrongCombination");
 		}
 	}
 
@@ -76,6 +87,15 @@ public class Main : MonoBehaviour
 		lastAdd = Random.Range (0, 3);
 		enemy.transform.position = spawnPoints [Random.Range(0,3)].transform.position;
 		enemy.tag = "C" + lastAdd;
+		enemy.GetComponent<Enemy> ().color = lastAdd;
 		Instantiate (enemy);
+	}
+
+	void SocreGain(int i)
+	{
+		score += 5 * keyAnswer [i].Length + (2 + combo) * combo;
+		combo++;
+		comboTime = 2f;
+		GameObject.Find ("Score").GetComponent<Text>().text = "Score : " + score;
 	}
 }
