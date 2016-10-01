@@ -22,15 +22,38 @@ public class Main : MonoBehaviour
 
 	void Start()
 	{
-		keyAnswer[0] = "XX";
-		keyAnswer[1] = "OO";
-		keyAnswer[2] = "SS";
-		keyAnswer[3] = "TT";
+		for (int i = 0; i < 4; i++) 
+		{
+			foreach (char c in PlayerPrefs.GetString(i.ToString())) 
+			{
+				keyAnswer [i] += "" + Translate (c.ToString());
+			}
+			Debug.Log (keyAnswer [i]);
+		}
 		spawnPoints = GameObject.FindGameObjectsWithTag ("SP");
 
 		for (int i = 0; i < 4; i++) 
 		{
 			enemies[i] = new List<GameObject>();
+		}
+	}
+
+	string Translate(string a)
+	{
+		switch(a)
+		{
+			case "1":
+				return "S";
+				break;
+			case "2":
+				return "T";
+				break;
+			case "3":
+				return "X";
+				break;
+			default:
+				return "C";
+				break;
 		}
 	}
 
@@ -59,7 +82,7 @@ public class Main : MonoBehaviour
 
 		for (int i = 0; i < 4; i++) 
 		{
-			if (tryText.Equals (keyAnswer[i])) 
+			if (tryText.Equals (keyAnswer[i]) && enemies[i].Count > 0) 
 			{
 				Debug.Log (tryText + " : " + keyAnswer [i]);
 				tries = 0;
