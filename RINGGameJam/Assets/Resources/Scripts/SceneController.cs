@@ -9,13 +9,6 @@ public class SceneController : MonoBehaviour {
 	public int fadeDir;
 	public float fadeSpeed;
 
-	void Start()
-	{
-		PlayerPrefs.SetInt ("ColorDif",2);
-		PlayerPrefs.SetInt ("SymbolsDif",1);
-	}
-
-
 	public void ChangeScene(int level) {
 		SceneManager.LoadScene (level);
 	}

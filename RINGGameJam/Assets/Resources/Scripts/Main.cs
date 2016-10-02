@@ -8,9 +8,6 @@ public class Main : MonoBehaviour
 {
 
 	public List<GameObject>[] enemies = new List<GameObject>[4];
-	public string  tryText = "";
-	public int tries;
-	string[] keyAnswer = new string[4];
 	GameObject[] spawnPoints;
 	float spawnTime = 5f;
 	float time = 0;
@@ -18,47 +15,20 @@ public class Main : MonoBehaviour
 	int combo = 0;
 	float score = 0;
 	int lastAdd;
+	int dif = 1;
+	int blah = 0;
 	public GameObject enemy;
 
 	void Start()
 	{
-		for (int i = 0; i < 4; i++) 
-		{
-			Debug.Log (PlayerPrefs.GetString (i.ToString ()).Length + " : " + PlayerPrefs.GetString (i.ToString ()));
-			if (PlayerPrefs.GetString (i.ToString ()).Length > 1) {
-				foreach (char c in PlayerPrefs.GetString(i.ToString())) {
-					keyAnswer [i] += "" + Translate (c.ToString ());
-				}
-			}
-
-			else if(PlayerPrefs.GetString (i.ToString ()).Length == 1) keyAnswer[i] += "" + Translate(PlayerPrefs.GetString (i.ToString ()));
-			Debug.Log (keyAnswer [i]);
-		}
 		spawnPoints = GameObject.FindGameObjectsWithTag ("SP");
 
 		for (int i = 0; i < 4; i++) 
 		{
 			enemies[i] = new List<GameObject>();
 		}
-	}
 
-	string Translate(string a)
-	{
-		switch(a)
-		{
-			case "1":
-				return "S";
-				break;
-			case "2":
-				return "T";
-				break;
-			case "3":
-				return "X";
-				break;
-			default:
-				return "C";
-				break;
-		}
+		ScoreGain (0);
 	}
 
 	void Update()
@@ -82,47 +52,35 @@ public class Main : MonoBehaviour
 				enemies [lastAdd].Add(temp [i]);
 			}
 			time = 0f;
-		}
-
-		for (int i = 0; i < 4; i++) 
-		{
-			if (tryText.Equals (keyAnswer[i]) && enemies[i].Count > 0) 
-			{
-				Debug.Log (tryText + " : " + keyAnswer [i]);
-				tries = 0;
-				tryText = "";
-				SocreGain (i);
-				Debug.Log (tryText + " : " + keyAnswer [i]);
-				for(int n = 0; n < enemies[i].Count; n++)
-				{
-					Destroy(enemies [i] [n]);
-				}
-				enemies [i].Clear();
-			} 
-		}
-
-		if (tries >= 3) 
-		{
-			tries = 0;
-			tryText = "";
+			if (spawnTime > 2) spawnTime -= 0.1f;
 		}
 	}
 
+	public void Atk(string dir)
+	{
+		int _index = dir == "Up" ? 0 : dir == "Left" ? 1 : dir == "Right" ? 2 : 3;
+		if(enemies[_index].Count > 0) enemies [_index] [0].GetComponent<Enemy>().life--;
+	}
 
 	void Spawn()
 	{
-		lastAdd = Random.Range (0, 3);
-		enemy.transform.position = spawnPoints [Random.Range(0,3)].transform.position;
+		lastAdd = Random.Range((int)0, (int)enemies.Length);
+		enemy.transform.position = spawnPoints [lastAdd].transform.position;
 		enemy.tag = "C" + lastAdd;
-		enemy.GetComponent<Enemy> ().color = lastAdd;
+		enemy.GetComponent<Enemy> ().color = Random.Range((int)0, (int)dif);
 		Instantiate (enemy);
+		blah++;
+		if (blah >= 5 && dif < 5) {
+			dif++;
+			blah = 0;
+		}
 	}
 
-	void SocreGain(int i)
+	public void ScoreGain(int i)
 	{
-		score += 5 * keyAnswer [i].Length + (2 + combo) * combo;
+		score += 5 * i + (2 + combo) * combo;
 		combo++;
 		comboTime = 2f;
-		GameObject.Find ("Score").GetComponent<Text>().text = "Score : " + score;
+		GameObject.Find ("Score").GetComponent<Text>().text = "Score: " + score;
 	}
 }
