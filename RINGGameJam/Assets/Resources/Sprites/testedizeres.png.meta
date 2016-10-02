@@ -1,0 +1,268 @@
+fileFormatVersion: 2
+guid: d89d6a697df214c489fe778e27b069b4
+timeCreated: 1475410328
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: testedizeres_0
+    21300002: testedizeres_1
+    21300004: testedizeres_2
+    21300006: testedizeres_3
+    21300008: testedizeres_4
+    21300010: testedizeres_5
+    21300012: testedizeres_6
+    21300014: testedizeres_7
+    21300016: testedizeres_8
+    21300018: testedizeres_9
+    21300020: testedizeres_10
+    21300022: testedizeres_11
+    21300024: testedizeres_12
+    21300026: testedizeres_13
+    21300028: testedizeres_14
+    21300030: testedizeres_15
+    21300032: testedizeres_16
+    21300034: testedizeres_17
+    21300036: testedizeres_18
+    21300038: testedizeres_19
+    21300040: testedizeres_20
+    21300042: testedizeres_21
+    21300044: testedizeres_22
+    21300046: testedizeres_23
+    21300048: testedizeres_24
+    21300050: testedizeres_25
+    21300052: testedizeres_26
+    21300054: testedizeres_27
+    21300056: testedizeres_28
+    21300058: testedizeres_29
+    21300060: testedizeres_30
+    21300062: testedizeres_31
+    21300064: testedizeres_32
+    21300066: testedizeres_33
+    21300068: testedizeres_34
+    21300070: testedizeres_35
+    21300072: testedizeres_36
+    21300074: testedizeres_37
+    21300076: testedizeres_38
+    21300078: testedizeres_39
+    21300080: testedizeres_40
+    21300082: testedizeres_41
+    21300084: testedizeres_42
+    21300086: testedizeres_43
+    21300088: testedizeres_44
+    21300090: testedizeres_45
+    21300092: testedizeres_46
+    21300094: testedizeres_47
+    21300096: testedizeres_48
+    21300098: testedizeres_49
+    21300100: testedizeres_50
+    21300102: testedizeres_51
+    21300104: testedizeres_52
+    21300106: testedizeres_53
+    21300108: testedizeres_54
+    21300110: testedizeres_55
+    21300112: testedizeres_56
+    21300114: testedizeres_57
+    21300116: testedizeres_58
+    21300118: testedizeres_59
+    21300120: testedizeres_60
+    21300122: testedizeres_61
+    21300124: testedizeres_62
+    21300126: testedizeres_63
+    21300128: testedizeres_64
+    21300130: testedizeres_65
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: testedizeres_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1133
+        width: 512
+        height: 67
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: testedizeres_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1066
+        width: 512
+        height: 67
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: testedizeres_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 999
+        width: 512
+        height: 67
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: testedizeres_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 932
+        width: 512
+        height: 67
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: testedizeres_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 865
+        width: 512
+        height: 67
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: testedizeres_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 798
+        width: 512
+        height: 67
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: testedizeres_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 731
+        width: 512
+        height: 67
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: testedizeres_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 664
+        width: 512
+        height: 67
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: testedizeres_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 597
+        width: 512
+        height: 67
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: testedizeres_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 530
+        width: 512
+        height: 67
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: testedizeres_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 463
+        width: 512
+        height: 67
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

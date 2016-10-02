@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Prime31.TransitionKit;
 using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour {
@@ -8,10 +9,13 @@ public class Enemy : MonoBehaviour {
 	public int color;
 	public Sprite[] sprites;
 	public int life;
+	private AudioSource audio;
+
 	void Start()
 	{
 		player = GameObject.Find ("Player");
 		life = color + 1;
+		audio = gameObject.GetComponent<AudioSource> ();
 	}
 
 	void Update()
@@ -39,10 +43,19 @@ public class Enemy : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D c)
 	{
 		if (c.gameObject.tag.Equals ("Player")) {
-			SceneManager.LoadScene ("Menu");
+
+			if (PlayerPrefs.GetFloat ("HighScore") < GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Main> ().score)
+				PlayerPrefs.SetFloat ("HighScore", GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Main> ().score);	
+			audio.Play ();
+			var doorway = new BlurTransition()
+			{
+				nextScene = 2,
+				duration = 0.2f,
+				blurMin = 0.0f,
+				blurMax = 0.2f
+			};
+			TransitionKit.instance.transitionWithDelegate(doorway);
 		}
 
 	}
-
-
 }

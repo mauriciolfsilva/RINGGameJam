@@ -9,19 +9,23 @@ public class Main : MonoBehaviour
 
 	public List<GameObject>[] enemies = new List<GameObject>[4];
 	GameObject[] spawnPoints;
-	float spawnTime = 5f;
+	float spawnTime = 3.5f;
 	float time = 0;
 	float comboTime = 0f;
 	int combo = 0;
-	float score = 0;
+	public float score = 0;
 	int lastAdd;
 	int dif = 1;
 	int blah = 0;
 	public GameObject enemy;
+	public GameObject aws;
 
 	void Start()
 	{
-		spawnPoints = GameObject.FindGameObjectsWithTag ("SP");
+		spawnPoints = new GameObject[4];
+		for (int i = 0; i < spawnPoints.Length; i++) {
+			spawnPoints[i] = GameObject.Find ("SP" + (i + 1));
+		}
 
 		for (int i = 0; i < 4; i++) 
 		{
@@ -44,21 +48,22 @@ public class Main : MonoBehaviour
 
 		if (time >= spawnTime) 
 		{
-			Spawn ();
-			temp = GameObject.FindGameObjectsWithTag ("C" + lastAdd);
-			enemies [lastAdd].Clear ();
-			for (int i = 0; i < temp.Length; i++) 
-			{
-				enemies [lastAdd].Add(temp [i]);
+			int mSp = Random.Range (1,dif);
+			for (int n = 0; n < mSp; n++) {
+				Spawn ();
+				temp = GameObject.FindGameObjectsWithTag ("C" + lastAdd);
+				enemies [lastAdd].Clear ();
+				for (int i = 0; i < temp.Length; i++) {
+					enemies [lastAdd].Add (temp [i]);
+				}
 			}
 			time = 0f;
-			if (spawnTime > 2) spawnTime -= 0.1f;
+			if (spawnTime > 1.5f) spawnTime -= 0.1f;
 		}
 	}
 
-	public void Atk(string dir)
+	public void Atk(int _index)
 	{
-		int _index = dir == "Up" ? 0 : dir == "Left" ? 1 : dir == "Right" ? 2 : 3;
 		if(enemies[_index].Count > 0) enemies [_index] [0].GetComponent<Enemy>().life--;
 	}
 
@@ -70,7 +75,7 @@ public class Main : MonoBehaviour
 		enemy.GetComponent<Enemy> ().color = Random.Range((int)0, (int)dif);
 		Instantiate (enemy);
 		blah++;
-		if (blah >= 5 && dif < 5) {
+		if (blah >= 5 && dif < 4) {
 			dif++;
 			blah = 0;
 		}
@@ -82,5 +87,10 @@ public class Main : MonoBehaviour
 		combo++;
 		comboTime = 2f;
 		GameObject.Find ("Score").GetComponent<Text>().text = "Score: " + score;
+		if (combo >= 4) {
+			aws.transform.position = new Vector3 (0,3,0);//20 a -20
+			aws.transform.Rotate(new Vector3(0,0,Random.Range(-20,20)));
+			Instantiate (aws);
+		}
 	}
 }

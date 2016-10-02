@@ -72,11 +72,11 @@ public class SwipeRecognize : MonoBehaviour {
 							if (swipeType.x > 0.0f) {
 								//swipe (SwipeDir.RIGHT);
 								//pop.text = "RGITH";
-								GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Main>().Atk("Right");
+								GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Main>().Atk(2);
 							} else {
 								//swipe (SwipeDir.LEFT);
 								//pop.text = "Left";
-								GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Main>().Atk("Left");
+								GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Main>().Atk(1);
 							}
 						}
 
@@ -84,11 +84,11 @@ public class SwipeRecognize : MonoBehaviour {
 							if (swipeType.y > 0.0f) {
 								//swipe (SwipeDir.UP);
 								//pop.text = "UP";
-								GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Main>().Atk("Up");
+								GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Main>().Atk(0);
 							} else {
 								//swipe (SwipeDir.DOWN);
 								//pop.text = "DOWN";
-								GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Main>().Atk("Down");
+								GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Main>().Atk(3);
 							}
 						}	
 					}
