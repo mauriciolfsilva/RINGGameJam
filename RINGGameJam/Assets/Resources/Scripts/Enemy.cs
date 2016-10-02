@@ -50,9 +50,7 @@ public class Enemy : MonoBehaviour {
 			var doorway = new BlurTransition()
 			{
 				nextScene = 2,
-				duration = 0.2f,
-				blurMin = 0.0f,
-				blurMax = 0.2f
+				duration = 0.5f
 			};
 			TransitionKit.instance.transitionWithDelegate(doorway);
 		}

@@ -2,7 +2,7 @@
 {
 	Properties
 	{
-		_MainTex ( "Base (RGB)", 2D ) = "white" {}
+		_MainTex ( "Texture", 2D ) = "white" {}
 		_Progress ( "Progress", Range( 0.0, 1.0 ) ) = 0.0
 		_Size ( "Size", Range( 0.1, 0.6 ) ) = 0.3
 		_WindVerticalSegments ( "Wind Height", Range( 1.0, 1000.0 ) ) = 100.0

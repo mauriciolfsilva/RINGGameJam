@@ -2,15 +2,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Scripts\Enemy.cs">
     <Files>
-      <File FileName="Assets\Resources\Scripts\Main.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\Enemy.cs" Line="43" Column="21" />
-      <File FileName="Assets\Resources\Scripts\SceneController.cs" Line="24" Column="57" />
-      <File FileName="Assets\Resources\Scripts\HighScore.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\AwesomeBh.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\SwipeRecognize.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Scripts\FadeText.cs" Line="1" Column="1" />
-      <File FileName="Assets\TransitionKit\transitions\DoorwayTransition.cs" Line="16" Column="27" />
-      <File FileName="Assets\TransitionKit\transitions\BlurTransition.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Scripts\Main.cs" Line="53" Column="11" />
+      <File FileName="Assets\Resources\Scripts\Enemy.cs" Line="53" Column="20" />
+      <File FileName="Assets\TransitionKit\transitions\shaders\Wind.shader" Line="19" Column="26" />
+      <File FileName="Assets\TransitionKit\transitions\WindTransition.cs" Line="43" Column="16" />
+      <File FileName="Assets\Resources\Scripts\SceneController.cs" Line="17" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

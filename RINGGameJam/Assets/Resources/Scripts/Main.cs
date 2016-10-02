@@ -50,7 +50,7 @@ public class Main : MonoBehaviour
 		{
 			int mSp = Random.Range (1,dif);
 			for (int n = 0; n < mSp; n++) {
-				Spawn ();
+				Spawn (dif - n);
 				temp = GameObject.FindGameObjectsWithTag ("C" + lastAdd);
 				enemies [lastAdd].Clear ();
 				for (int i = 0; i < temp.Length; i++) {
@@ -58,7 +58,7 @@ public class Main : MonoBehaviour
 				}
 			}
 			time = 0f;
-			if (spawnTime > 1.5f) spawnTime -= 0.1f;
+			if (spawnTime > 2f) spawnTime -= 0.1f;
 		}
 	}
 
@@ -67,12 +67,19 @@ public class Main : MonoBehaviour
 		if(enemies[_index].Count > 0) enemies [_index] [0].GetComponent<Enemy>().life--;
 	}
 
-	void Spawn()
+	void Spawn(int difi)
 	{
-		lastAdd = Random.Range((int)0, (int)enemies.Length);
+		if (difi >= 4)	difi = 3;
+		else if ((difi < 0)) difi = 0;
+
+		int myAdd = Random.Range((int)0, (int)enemies.Length);
+		while (myAdd == lastAdd) {
+			myAdd = Random.Range((int)0, (int)enemies.Length);
+		}
+		lastAdd = myAdd;
 		enemy.transform.position = spawnPoints [lastAdd].transform.position;
 		enemy.tag = "C" + lastAdd;
-		enemy.GetComponent<Enemy> ().color = Random.Range((int)0, (int)dif);
+		enemy.GetComponent<Enemy> ().color = Random.Range((int)0, (int)difi);
 		Instantiate (enemy);
 		blah++;
 		if (blah >= 5 && dif < 4) {
