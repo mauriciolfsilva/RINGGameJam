@@ -1,12 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
-public class FadeText : MonoBehaviour
-{
+public class FadeText : MonoBehaviour {
+
+	public bool isSet;
+
 	void Start()
 	{
-		StartCoroutine(FadeTextToFullAlpha(1f, GetComponent<Text>()));
+		if(SceneManager.GetActiveScene().buildIndex == 0) StartCoroutine(FadeTextToFullAlpha(1f, GetComponent<Text>()));
+	}
+
+	void Update() {
+		if (SceneManager.GetActiveScene().buildIndex == 0 && GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Main> ().pause && isSet) {
+			StartCoroutine(FadeTextToFullAlpha(1f, GetComponent<Text>()));
+			isSet = false;
+		}
 	}
 
 	public IEnumerator FadeTextToFullAlpha(float time, Text txt)
